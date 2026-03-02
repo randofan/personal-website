@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="David Song">
+  <div class="bio">
+    <img
+      src="/IMG_2859.jpg"
+      alt="Photo of David Song"
+      width="200"
+    />
+    <div>
+      <p>
+        hi, i'm david. i like to build things and occasionally write about them.
+        currently, i'm interested in exploring every layer of the ai stack.
+        follow along.
+      </p>
+      <p>
+        <i>this website is a playground for tinkering.
+        it's built with astro and lit islands, and deployed on cloudflare.
+        the source code is available on <a href="https://github.com/randofan/personal-website">github</a>.</i>
+      </p>
+    </div>
+  </div>
+
+  <hr />
+
+  <ul>
+    <li>i write on <a href="https://substack.com/@mrdavidsong">substack</a> whenever inspiration strikes</li>
+    <li>i take <a href="https://www.notion.so/Misc-Notes-2c30297aaf7d8070b595e25531ce0856">notes</a> on things i read</li>
+    <li>i stalk who <a href="https://cloud.umami.is/analytics/us/share/HbiubHZZFvblPhQn">visits</a> my website</li>
+  </ul>
+</BaseLayout>
+
+<style>
+  .bio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .bio img {
+    border: 1px solid #000;
+    display: block;
+    width: 200px;
+    height: auto;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
+
+  .bio > div {
+    flex: 1;
+    min-width: 18ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+</style>

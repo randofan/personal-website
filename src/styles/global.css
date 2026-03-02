@@ -1,0 +1,71 @@
+/* ─── Reset ──────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Design tokens ──────────────────────────────────────────────────── */
+:root {
+  --max-w: 600px;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────── */
+html {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  background: #fff;
+  color: #000;
+}
+
+body {
+  max-width: var(--max-w);
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 1rem 0;
+}
+
+/* Let the browser render links in its native default colours */
+a { text-decoration: underline; }
+
+/* ─── Footer ─────────────────────────────────────────────────────────── */
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+footer .sep {
+  color: #999;
+}
+
+footer .social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+footer .social-links svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
