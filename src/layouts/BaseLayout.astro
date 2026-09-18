@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description = 'Personal website of David Song.' } = Astro.props;
+const webmcpOriginTrialToken = import.meta.env.PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN;
 ---
 
 <!doctype html>
@@ -18,6 +19,8 @@ const { title, description = 'Personal website of David Song.' } = Astro.props;
     <title>{title}</title>
     <base target="_blank" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    {webmcpOriginTrialToken && <meta http-equiv="origin-trial" content={webmcpOriginTrialToken} />}
+    <script>import '../scripts/guestbook-tool.ts';</script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="8672e9fe-0511-485d-9af5-0b74055e946a"></script>
   </head>
   <body>

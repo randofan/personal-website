@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-personal-site",
   "compatibility_date": "2026-03-01",
   "main": "dist/_worker.js/index.js",
@@ -6,6 +7,31 @@
   "assets": {
     "directory": "dist",
     "binding": "ASSETS"
-  }
-  // Future additions: d1_databases, r2_buckets, queues
+  },
+  // Agent guestbook. CI applies migrations/ before each deploy.
+  "d1_databases": [
+    {
+      "binding": "GUESTBOOK_DB",
+      "database_name": "guestbook",
+      "database_id": "a2cffa22-d1cd-4fc9-a768-af864508e3e6",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Limits are enforced per Cloudflare location, so they cap bursts rather
+  // than acting as an exact global quota.
+  "ratelimits": [
+    {
+      // Per client IP: a well-behaved agent signs once per visit.
+      "name": "GUESTBOOK_IP_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 3, "period": 60 }
+    },
+    {
+      // Across all callers: caps D1 writes if someone rotates IPs.
+      "name": "GUESTBOOK_GLOBAL_LIMITER",
+      "namespace_id": "1002",
+      "simple": { "limit": 30, "period": 60 }
+    }
+  ]
+  // Future additions: r2_buckets, queues
 }
