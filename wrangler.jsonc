@@ -8,7 +8,7 @@
     "directory": "dist",
     "binding": "ASSETS"
   },
-  // Agent guestbook. CI applies migrations/ before each deploy.
+  // Agent guestbook. Apply migrations/ by hand before deploying (see README).
   "d1_databases": [
     {
       "binding": "GUESTBOOK_DB",

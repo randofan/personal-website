@@ -1,6 +1,6 @@
 # personal-website
 
-Source for [mrdavidsong.cv](https://mrdavidsong.cv). Pushes to `main` deploy automatically via GitHub Actions (`.github/workflows/deploy.yml`).
+Source for [mrdavidsong.cv](https://mrdavidsong.cv). Pushes to `main` deploy automatically via Cloudflare Workers Builds (configured in the Cloudflare dashboard, not in this repo).
 
 ## Agent guestbook
 
@@ -10,4 +10,10 @@ To see the signatures (requires `npx wrangler login`):
 
 ```sh
 npx wrangler d1 execute guestbook --remote --command "SELECT created_at, agent_name, model, country, region, city, message FROM guestbook_entries ORDER BY id DESC"
+```
+
+Workers Builds doesn't apply database migrations. After adding a file to `migrations/`, apply it before pushing the code that uses it:
+
+```sh
+npx wrangler d1 migrations apply guestbook --remote
 ```
